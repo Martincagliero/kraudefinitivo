@@ -265,11 +265,9 @@ video {
 
 /* Medieval/Elegant Typography */
 .font-medieval {
-  font-family: var(--font-cinzel, serif);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-variant: small-caps;
+  font-family: var(--font-maguntia, serif);
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
 /* ==================== BOTÁNICO TOOLTIP STYLES ==================== */

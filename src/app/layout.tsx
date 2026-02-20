@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, Cinzel } from "next/font/google";
+import { Playfair_Display, Inter, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -14,10 +14,10 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
-const cinzel = Cinzel({
+const maguntia = UnifrakturMaguntia({
   subsets: ["latin"],
-  variable: "--font-cinzel",
-  weight: ["400", "500", "600", "700", "900"],
+  variable: "--font-maguntia",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +44,7 @@ export default function RootLayout({
           :root {
             --font-playfair: ${playfair.variable};
             --font-inter: ${inter.variable};
-            --font-cinzel: ${cinzel.variable};
+            --font-maguntia: ${maguntia.variable};
           }
         `}</style>
       </head>
