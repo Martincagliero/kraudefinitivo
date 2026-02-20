@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,7 @@ export default function Header() {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
     }
   };
 
@@ -29,6 +31,37 @@ export default function Header() {
     { label: "Botella", id: "bottle" },
     { label: "Contacto", id: "contact" },
   ];
+
+  const hamburgerVariants = {
+    top: {
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: 45, y: 10 },
+    },
+    middle: {
+      closed: { opacity: 1 },
+      open: { opacity: 0 },
+    },
+    bottom: {
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: -45, y: -10 },
+    },
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+  };
+
+  const mobileMenuItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.1 },
+    }),
+    exit: { opacity: 0, x: -20 },
+  };
 
   return (
     <motion.header
@@ -78,7 +111,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button - Hidden on mobile, visible on md and up */}
           <motion.button
             onClick={() => handleScroll("contact")}
             className="btn-cta hidden sm:inline-block text-xs md:text-sm"
@@ -88,19 +121,81 @@ export default function Header() {
             DEGUSTAR
           </motion.button>
 
-          {/* Mobile menu button - visible only on mobile */}
+          {/* Hamburger Menu Button - Visible only on mobile */}
           <motion.button
-            onClick={() => handleScroll("contact")}
-            className="btn-cta md:hidden text-xs py-2 px-4"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="hamburger-btn md:hidden"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Toggle menu"
           >
-            DEGUSTAR
+            <div className="hamburger-icon">
+              <motion.div
+                className="hamburger-line"
+                variants={hamburgerVariants.top}
+                initial="closed"
+                animate={isMenuOpen ? "open" : "closed"}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
+                className="hamburger-line"
+                variants={hamburgerVariants.middle}
+                initial="closed"
+                animate={isMenuOpen ? "open" : "closed"}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
+                className="hamburger-line"
+                variants={hamburgerVariants.bottom}
+                initial="closed"
+                animate={isMenuOpen ? "open" : "closed"}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
           </motion.button>
         </div>
 
-        {/* Mobile navigation dropdown - could be expanded */}
-        {/* For simplicity, using the direct button approach above */}
+        {/* Mobile Navigation Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav
+              className="md:hidden mt-4 pt-4 border-t border-kraut-orange/20"
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.3 }}
+            >
+              {navItems.map((item, i) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => handleScroll(item.id)}
+                  className="btn-mobile-nav w-full text-left"
+                  custom={i}
+                  variants={mobileMenuItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+              <motion.button
+                onClick={() => handleScroll("contact")}
+                className="btn-cta w-full mt-4 sm:hidden text-xs py-3"
+                custom={navItems.length}
+                variants={mobileMenuItemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                whileTap={{ scale: 0.95 }}
+              >
+                DEGUSTAR
+              </motion.button>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
