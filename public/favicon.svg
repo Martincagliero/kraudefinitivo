@@ -1,0 +1,12 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #1a2e1f; }
+      .accent { fill: #d4855a; }
+      .text { fill: #f5f3f0; font-family: Georgia, serif; font-size: 32px; font-weight: bold; }
+    </style>
+  </defs>
+  <rect class="bg" width="64" height="64"/>
+  <circle class="accent" cx="32" cy="24" r="12"/>
+  <path class="accent" d="M 32 40 Q 20 48 20 56 L 44 56 Q 44 48 32 40 Z"/>
+</svg>
