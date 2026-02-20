@@ -44,13 +44,6 @@ function BotanicoCard({ name, image, index }: BotanicoCardProps) {
 
           {/* Dark overlay on hover */}
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300" />
-
-          {/* Text overlay */}
-          <div className="absolute inset-0 flex items-end justify-center p-4 sm:p-5 md:p-6">
-            <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-kraut-white text-center">
-              {name}
-            </h3>
-          </div>
         </div>
       </BotanicoTooltip>
     </motion.div>
