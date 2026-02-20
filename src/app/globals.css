@@ -328,20 +328,71 @@ video {
 /* Mobile optimizations */
 @media (max-width: 640px) {
   .herb-tooltip {
-    position: fixed;
-    bottom: auto;
-    top: 50%;
+    position: absolute;
+    bottom: calc(100% + 12px);
     left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 260px;
+    transform: translateX(-50%);
+    max-width: 220px;
+    pointer-events: none;
+  }
+
+  .herb-tooltip > * {
+    pointer-events: auto;
   }
 
   .herb-tooltip-content {
-    padding: 14px 16px;
+    padding: 10px 12px;
+  }
+
+  .herb-tooltip-title {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+
+  .herb-tooltip-description {
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
 
   .herb-tooltip-arrow {
     display: none;
+  }
+
+  /* Mobile backdrop - covers entire screen with semi-transparent overlay */
+  .herb-tooltip-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    will-change: opacity;
+  }
+
+  /* Mobile modal - centered on screen */
+  .herb-tooltip-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    pointer-events: auto;
+    max-width: min(240px, calc(100vw - 32px));
+    will-change: transform, opacity;
+  }
+
+  .herb-tooltip-modal .herb-tooltip-content {
+    padding: 12px 14px;
+  }
+
+  .herb-tooltip-modal .herb-tooltip-title {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .herb-tooltip-modal .herb-tooltip-description {
+    font-size: 0.8rem;
   }
 }
 

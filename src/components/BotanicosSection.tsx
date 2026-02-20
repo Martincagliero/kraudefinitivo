@@ -91,7 +91,7 @@ export default function BotanicosSection() {
   return (
     <section
       id="botanicos"
-      className="section w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-kraut-dark"
+      className="section w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-kraut-dark overflow-hidden"
     >
       <motion.div
         ref={ref}
@@ -117,7 +117,7 @@ export default function BotanicosSection() {
         </div>
 
         {/* Grid - Responsive: 2 cols mobile, 3 cols tablet, 6 cols desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
           {botanicos.map((botanico, index) => (
             <BotanicoCard
               key={index}

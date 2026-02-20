@@ -69,43 +69,83 @@ export default function HerbTooltip({ name, description, children }: HerbTooltip
   const tooltipContent = description || tooltipDescriptions[name] || "Ingrediente fino en nuestra formulación.";
 
   return (
-    <div
-      ref={triggerRef}
-      className="relative w-full h-full"
-      onMouseEnter={() => !isMobile && setIsOpen(true)}
-      onMouseLeave={() => !isMobile && setIsOpen(false)}
-      onClick={() => isMobile && setIsOpen(!isOpen)}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
-      aria-label={`Información sobre ${name}`}
-      aria-haspopup="dialog"
-      aria-expanded={isOpen}
-    >
-      {children}
+    <>
+      <div
+        ref={triggerRef}
+        className="relative w-full h-full"
+        onMouseEnter={() => !isMobile && setIsOpen(true)}
+        onMouseLeave={() => !isMobile && setIsOpen(false)}
+        onClick={() => isMobile && setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={`Información sobre ${name}`}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+      >
+        {children}
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            ref={tooltipRef}
-            className="herb-tooltip"
-            initial={{ opacity: 0, scale: 0.98, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -10 }}
-            transition={{ duration: 0.25, delay: 0.04 }}
-            role="dialog"
-            aria-label={`Información de ${name}`}
-          >
-            <div className="herb-tooltip-content">
-              <h4 className="herb-tooltip-title">{name}</h4>
-              <p className="herb-tooltip-description">{tooltipContent}</p>
-            </div>
+        {/* Desktop tooltip - appears above/below card */}
+        {!isMobile && (
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                ref={tooltipRef}
+                className="herb-tooltip"
+                initial={{ opacity: 0, scale: 0.98, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98, y: -10 }}
+                transition={{ duration: 0.25, delay: 0.04 }}
+                role="dialog"
+                aria-label={`Información de ${name}`}
+              >
+                <div className="herb-tooltip-content">
+                  <h4 className="herb-tooltip-title">{name}</h4>
+                  <p className="herb-tooltip-description">{tooltipContent}</p>
+                </div>
 
-            {/* Tiny arrow/pointer */}
-            <div className="herb-tooltip-arrow" />
-          </motion.div>
+                {/* Tiny arrow/pointer */}
+                <div className="herb-tooltip-arrow" />
+              </motion.div>
+            )}
+          </AnimatePresence>
         )}
-      </AnimatePresence>
-    </div>
+      </div>
+
+      {/* Mobile tooltip - appears as modal overlay */}
+      {isMobile && (
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Overlay backdrop */}
+              <motion.div
+                className="herb-tooltip-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsOpen(false)}
+              />
+
+              {/* Centered tooltip */}
+              <motion.div
+                ref={tooltipRef}
+                className="herb-tooltip-modal"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25 }}
+                role="dialog"
+                aria-label={`Información de ${name}`}
+              >
+                <div className="herb-tooltip-content">
+                  <h4 className="herb-tooltip-title">{name}</h4>
+                  <p className="herb-tooltip-description">{tooltipContent}</p>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      )}
+    </>
   );
 }
