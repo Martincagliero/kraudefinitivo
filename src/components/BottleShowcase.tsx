@@ -19,7 +19,7 @@ export default function BottleShowcase() {
       }}
     >
       {/* Background image overlay - lighter for visibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-kraut-dark/30 via-kraut-dark/40 to-kraut-dark/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-kraut-dark/15 via-kraut-dark/20 to-kraut-dark/25" />
 
       {/* Subtle orange radial glow */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-20 blur-3xl" style={{
