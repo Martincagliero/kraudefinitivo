@@ -1,41 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 
 export default function BottleShowcase() {
   const sectionRef = useRef(null);
-  const { ref: videoRef, inView } = useInView({
-    threshold: 0.3,
-    triggerOnce: true,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8 },
-    },
-  };
 
   return (
     <section
       id="bottle"
       ref={sectionRef}
-      className="section relative w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden min-h-screen"
+      className="section relative w-full py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: 'url(/background.png)',
         backgroundSize: 'cover',
@@ -53,14 +28,13 @@ export default function BottleShowcase() {
 
       <motion.div
         className="relative z-10 w-full max-w-3xl"
-        ref={videoRef}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       >
         {/* Bottle video with transparent background */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="relative w-full max-w-lg h-56 sm:h-72 md:h-96 mb-8 sm:mb-12 md:mb-16 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mx-auto"
           style={{
             background: 'transparent',
@@ -77,12 +51,15 @@ export default function BottleShowcase() {
             <source src="/output_clean.webm" type="video/webm" />
             <source src="/bottle-video.mp4" type="video/mp4" />
           </video>
-        </motion.div>
+        </div>
 
         {/* Main phrase */}
         <motion.div
-          variants={itemVariants}
           className="text-center px-4 sm:px-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-kraut-white leading-tight tracking-wide">
             La botella como amuleto.
