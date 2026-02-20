@@ -91,7 +91,7 @@ export default function BotanicosSection() {
   return (
     <section
       id="botanicos"
-      className="section w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-kraut-dark overflow-hidden"
+      className="section w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-kraut-dark sm:overflow-hidden"
     >
       <motion.div
         ref={ref}
