@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import HerbTooltip from "./HerbTooltip";
 
 interface BotanicoCardProps {
   name: string;
@@ -25,31 +26,33 @@ function BotanicoCard({ name, image, index }: BotanicoCardProps) {
       transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
       whileHover={{ scale: 1.04 }}
     >
-      <div className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg">
-        {/* Subtle glow behind on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-radial" style={{
-          background: 'radial-gradient(circle at center, rgba(212, 133, 90, 0.15) 0%, transparent 70%)'
-        }} />
-        
-        {/* Image placeholder */}
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover group-hover:scale-110 transition-transform duration-500"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-        />
+      <HerbTooltip name={name} description="">
+        <div className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+          {/* Subtle glow behind on hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-radial" style={{
+            background: 'radial-gradient(circle at center, rgba(212, 133, 90, 0.15) 0%, transparent 70%)'
+          }} />
+          
+          {/* Image placeholder */}
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+          />
 
-        {/* Dark overlay on hover */}
-        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300" />
+          {/* Dark overlay on hover */}
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300" />
 
-        {/* Text overlay */}
-        <div className="absolute inset-0 flex items-end justify-center p-4 sm:p-5 md:p-6">
-          <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-kraut-white text-center">
-            {name}
-          </h3>
+          {/* Text overlay */}
+          <div className="absolute inset-0 flex items-end justify-center p-4 sm:p-5 md:p-6">
+            <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-kraut-white text-center">
+              {name}
+            </h3>
+          </div>
         </div>
-      </div>
+      </HerbTooltip>
     </motion.div>
   );
 }
