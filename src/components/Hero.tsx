@@ -18,7 +18,7 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-screen flex items-center justify-center overflow-hidden bg-kraut-dark">
       {/* Video background - optimized for mobile */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full md:max-w-[85vw] md:h-[85vh] md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 object-cover"
         autoPlay
         muted
         loop
