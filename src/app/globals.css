@@ -126,6 +126,13 @@
   background-color: rgba(212, 133, 90, 0.15);
 }
 
+/* Hide hamburger on desktop (md breakpoint: 768px and up) */
+@media (min-width: 768px) {
+  .hamburger-btn {
+    display: none !important;
+  }
+}
+
 .hamburger-icon {
   position: relative;
   width: 24px;
