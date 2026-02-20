@@ -64,13 +64,14 @@ export default function Header() {
           </motion.div>
 
           {/* Navigation - Hidden on mobile, visible on md and up */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <nav className="hidden md:flex items-center gap-3 lg:gap-4">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="text-sm lg:text-base text-kraut-white/80 hover:text-kraut-orange transition-colors duration-300 font-sans font-medium tracking-wide pb-1 border-b-2 border-b-transparent hover:border-b-kraut-orange"
-                whileHover={{ scale: 1.05 }}
+                className="btn-nav text-sm lg:text-base"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {item.label}
               </motion.button>
@@ -80,20 +81,18 @@ export default function Header() {
           {/* CTA Button */}
           <motion.button
             onClick={() => handleScroll("contact")}
-            className="btn-primary bg-kraut-orange text-kraut-dark hidden sm:inline-block"
-            whileHover={{ scale: 1.08 }}
+            className="btn-cta hidden sm:inline-block text-xs md:text-sm"
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-xs md:text-sm font-semibold tracking-widest">
-              DEGUSTAR
-            </span>
+            DEGUSTAR
           </motion.button>
 
           {/* Mobile menu button - visible only on mobile */}
           <motion.button
             onClick={() => handleScroll("contact")}
-            className="md:hidden btn-primary bg-kraut-orange text-kraut-dark text-xs py-2 px-3"
-            whileHover={{ scale: 1.08 }}
+            className="btn-cta md:hidden text-xs py-2 px-4"
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             DEGUSTAR
