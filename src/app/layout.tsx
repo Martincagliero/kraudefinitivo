@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, Crimson_Text } from "next/font/google";
+import { Playfair_Display, Inter, IM_Fell_English } from 'next/font/google';
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -14,10 +14,10 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
-const crimson = Crimson_Text({
+const imFellEnglish = IM_Fell_English({
   subsets: ["latin"],
-  variable: "--font-crimson",
-  weight: ["400", "600", "700"],
+  variable: "--font-im-fell-english",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +44,7 @@ export default function RootLayout({
           :root {
             --font-playfair: ${playfair.variable};
             --font-inter: ${inter.variable};
-            --font-crimson: ${crimson.variable};
+            --font-im-fell-english: ${imFellEnglish.variable};
           }
         `}</style>
       </head>
