@@ -13,10 +13,10 @@ export default function BottleShowcase() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    offset: ["start center", "end center"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,7 +42,7 @@ export default function BottleShowcase() {
     <section
       id="bottle"
       ref={sectionRef}
-      className="section relative w-full py-12 sm:py-14 md:py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden"
+      className="section relative w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden min-h-screen"
       style={{
         backgroundImage: 'url(/background.png)',
         backgroundSize: 'cover',
@@ -68,7 +68,7 @@ export default function BottleShowcase() {
         {/* Bottle video with transparent background */}
         <motion.div
           variants={itemVariants}
-          className="relative w-full max-w-sm h-48 sm:h-60 md:h-72 mb-6 sm:mb-8 md:mb-10 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mx-auto"
+          className="relative w-full max-w-lg h-56 sm:h-72 md:h-96 mb-8 sm:mb-12 md:mb-16 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mx-auto"
           style={{
             background: 'transparent',
             y: y,
