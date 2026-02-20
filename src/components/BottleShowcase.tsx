@@ -12,7 +12,7 @@ export default function BottleShowcase() {
       ref={sectionRef}
       className="section relative w-full py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: 'url(/background.png)',
+        backgroundImage: 'url(/background.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
