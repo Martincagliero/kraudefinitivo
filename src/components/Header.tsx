@@ -121,10 +121,10 @@ export default function Header() {
             DEGUSTAR
           </motion.button>
 
-          {/* Hamburger Menu Button - Visible only on mobile */}
+          {/* Hamburger Menu Button - Visible only on md and below */}
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="hamburger-btn md:hidden"
+            className="hamburger-btn lg:hidden"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle menu"
@@ -159,7 +159,7 @@ export default function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              className="md:hidden mt-4 pt-4 border-t border-kraut-orange/20"
+              className="lg:hidden mt-4 pt-4 border-t border-kraut-orange/20"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
@@ -181,18 +181,6 @@ export default function Header() {
                   {item.label}
                 </motion.button>
               ))}
-              <motion.button
-                onClick={() => handleScroll("contact")}
-                className="btn-cta w-full mt-4 sm:hidden text-xs py-3"
-                custom={navItems.length}
-                variants={mobileMenuItemVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                whileTap={{ scale: 0.95 }}
-              >
-                DEGUSTAR
-              </motion.button>
             </motion.nav>
           )}
         </AnimatePresence>
