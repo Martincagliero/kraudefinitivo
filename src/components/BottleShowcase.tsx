@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 
@@ -10,13 +10,6 @@ export default function BottleShowcase() {
     threshold: 0.3,
     triggerOnce: true,
   });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start center", "end center"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,7 +64,6 @@ export default function BottleShowcase() {
           className="relative w-full max-w-lg h-56 sm:h-72 md:h-96 mb-8 sm:mb-12 md:mb-16 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mx-auto"
           style={{
             background: 'transparent',
-            y: y,
           }}
         >
           <video
