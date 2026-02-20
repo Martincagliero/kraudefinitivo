@@ -7,14 +7,26 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    handleResize();
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleScroll = (elementId: string) => {
@@ -121,38 +133,40 @@ export default function Header() {
             DEGUSTAR
           </motion.button>
 
-          {/* Hamburger Menu Button - Visible only on mobile (sm) */}
-          <motion.button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="hamburger-btn md:hidden"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle menu"
-          >
-            <div className="hamburger-icon">
-              <motion.div
-                className="hamburger-line"
-                variants={hamburgerVariants.top}
-                initial="closed"
-                animate={isMenuOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="hamburger-line"
-                variants={hamburgerVariants.middle}
-                initial="closed"
-                animate={isMenuOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="hamburger-line"
-                variants={hamburgerVariants.bottom}
-                initial="closed"
-                animate={isMenuOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-          </motion.button>
+          {/* Hamburger Menu Button - Only render on mobile */}
+          {isMobile && (
+            <motion.button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="hamburger-btn"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle menu"
+            >
+              <div className="hamburger-icon">
+                <motion.div
+                  className="hamburger-line"
+                  variants={hamburgerVariants.top}
+                  initial="closed"
+                  animate={isMenuOpen ? "open" : "closed"}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="hamburger-line"
+                  variants={hamburgerVariants.middle}
+                  initial="closed"
+                  animate={isMenuOpen ? "open" : "closed"}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="hamburger-line"
+                  variants={hamburgerVariants.bottom}
+                  initial="closed"
+                  animate={isMenuOpen ? "open" : "closed"}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </motion.button>
+          )}
         </div>
 
         {/* Mobile Navigation Menu */}
