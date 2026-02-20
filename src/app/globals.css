@@ -263,3 +263,131 @@ video {
   background: #e89966;
 }
 
+/* ==================== BOTÁNICO TOOLTIP STYLES ==================== */
+/* Tooltip aparece arriba del botánico */
+.botanico-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: auto;
+}
+
+/* Contenedor del tooltip con estilo premium */
+.botanico-tooltip-content {
+  background: rgba(26, 46, 31, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 165, 0, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  max-width: 220px;
+  min-width: 160px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(255, 165, 0, 0.1);
+}
+
+/* Nombre del botánico en naranja */
+.botanico-tooltip-name {
+  font-family: var(--font-playfair, serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFA500;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* Descripción en gris claro */
+.botanico-tooltip-desc {
+  font-family: var(--font-inter, sans-serif);
+  font-size: 0.8rem;
+  color: rgba(245, 243, 240, 0.8);
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+/* Flecha/punta del tooltip */
+.botanico-tooltip-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(26, 46, 31, 0.95);
+}
+
+/* RESPONSIVE - Mobile */
+@media (max-width: 640px) {
+  /* Más pequeño en mobile */
+  .botanico-tooltip {
+    bottom: calc(100% + 8px);
+  }
+
+  .botanico-tooltip-content {
+    padding: 10px 14px;
+    max-width: 200px;
+    min-width: 140px;
+  }
+
+  .botanico-tooltip-name {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+
+  .botanico-tooltip-desc {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .botanico-tooltip-arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(26, 46, 31, 0.95);
+    bottom: -5px;
+  }
+}
+
+/* RESPONSIVE - Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .botanico-tooltip-content {
+    max-width: 210px;
+  }
+
+  .botanico-tooltip-name {
+    font-size: 0.9rem;
+  }
+
+  .botanico-tooltip-desc {
+    font-size: 0.78rem;
+  }
+}
+
+/* Desktop - versión normal */
+@media (min-width: 1025px) {
+  .botanico-tooltip-content {
+    max-width: 240px;
+  }
+
+  .botanico-tooltip-name {
+    font-size: 0.98rem;
+  }
+
+  .botanico-tooltip-desc {
+    font-size: 0.82rem;
+  }
+}
+
+/* Respeto por preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .botanico-tooltip {
+    /* Las animaciones las maneja Framer Motion con transition properties */
+  }
+}
+
+/* ================================================================ */
+
