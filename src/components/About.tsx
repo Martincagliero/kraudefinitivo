@@ -84,16 +84,16 @@ export default function About() {
           variants={itemVariants}
           className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 md:pt-12"
         >
-          {/* Decorative divider line */}
+          {/* Decorative divider line - naranja */}
           <motion.div
-            className="h-px bg-gradient-to-r from-transparent via-kraut-white/30 to-transparent mb-10 sm:mb-12 md:mb-14"
+            className="h-1 w-12 sm:w-16 mx-auto bg-kraut-orange rounded-full mb-10 sm:mb-12 md:mb-14"
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           />
 
-          {/* Premium Button */}
+          {/* Premium Button with glow effect */}
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
@@ -103,11 +103,24 @@ export default function About() {
           >
             <Link href="/botanicos">
               <motion.button
-                className="px-8 sm:px-10 md:px-14 py-3 sm:py-4 md:py-5 border-2 border-kraut-white/60 text-kraut-white uppercase font-serif font-bold text-xs sm:text-sm md:text-base tracking-widest hover:border-kraut-white hover:bg-kraut-white/5 transition-all duration-300 rounded-none"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                className="relative px-8 sm:px-12 md:px-16 py-3 sm:py-4 md:py-5 border-2 border-kraut-orange text-kraut-orange uppercase font-serif font-bold text-xs sm:text-sm md:text-base tracking-widest rounded-none overflow-hidden group"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
               >
-                DESCUBRÍ LOS BOTÁNICOS
+                {/* Glow background on hover */}
+                <div className="absolute inset-0 bg-kraut-orange opacity-0 group-hover:opacity-15 transition-opacity duration-300 -z-10" />
+                
+                {/* Animated shine effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-kraut-white/10 to-transparent opacity-0 group-hover:opacity-100 -z-10"
+                  animate={{ x: ['-100%', '100%'] }}
+                  transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 3 }}
+                />
+
+                {/* Text with color change on hover */}
+                <span className="relative group-hover:text-kraut-white transition-colors duration-300">
+                  DESCUBRÍ LOS BOTÁNICOS
+                </span>
               </motion.button>
             </Link>
           </motion.div>

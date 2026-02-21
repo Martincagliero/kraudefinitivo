@@ -96,18 +96,18 @@ const BotanicosCarousel = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-kraut-dark overflow-hidden px-4 sm:px-6 lg:px-8 py-20">
+    <section className="relative w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-kraut-dark overflow-hidden">
       <div
-        className="w-full max-w-5xl"
+        className="w-full max-w-4xl mx-auto"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onPointerDown={handleDragStart}
         onPointerUp={handleDragEnd}
       >
         {/* Carousel */}
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center min-h-[500px] sm:min-h-[600px]">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center min-h-[350px] sm:min-h-[400px]">
           {/* Image side */}
-          <div className="relative h-[400px] sm:h-[500px] md:h-[550px] rounded-lg overflow-hidden">
+          <div className="relative h-[300px] sm:h-[350px] md:h-[400px] rounded-lg overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -139,11 +139,11 @@ const BotanicosCarousel = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="space-y-6"
+                className="space-y-4 sm:space-y-5"
               >
                 {/* Decorative accent - top */}
                 <motion.div
-                  className="h-1 w-12 sm:w-16 bg-kraut-orange rounded-full"
+                  className="h-0.5 w-8 sm:w-10 bg-kraut-orange rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.6 }}
@@ -155,7 +155,7 @@ const BotanicosCarousel = () => {
                   variants={contentVariants}
                   initial="hidden"
                   animate="visible"
-                  className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-kraut-white tracking-wide"
+                  className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-kraut-white tracking-wide"
                 >
                   {botanicos[currentSlide].name}
                 </motion.h2>
@@ -166,14 +166,14 @@ const BotanicosCarousel = () => {
                   variants={contentVariants}
                   initial="hidden"
                   animate="visible"
-                  className="text-base sm:text-lg text-kraut-white/75 leading-relaxed max-w-md"
+                  className="text-sm sm:text-base text-kraut-white/75 leading-relaxed"
                 >
                   {botanicos[currentSlide].description}
                 </motion.p>
 
                 {/* Decorative accent - bottom */}
                 <motion.div
-                  className="h-1 w-12 sm:w-16 bg-kraut-orange rounded-full"
+                  className="h-0.5 w-8 sm:w-10 bg-kraut-orange rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -183,80 +183,77 @@ const BotanicosCarousel = () => {
           </div>
         </div>
 
-        {/* Navigation Controls */}
-        <div className="flex items-center justify-center md:justify-end gap-8 mt-12 sm:mt-16 md:mt-20">
-          {/* Navigation Arrows */}
-          <div className="flex items-center gap-6">
-            <motion.button
-              onClick={() =>
-                setCurrentSlide((prev) => (prev - 1 + botanicos.length) % botanicos.length)
-              }
-              className="text-kraut-orange hover:text-kraut-white transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Previous botanico"
+        {/* Navigation Controls - Arrows at sides */}
+        <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 flex justify-between items-center px-2 sm:px-4 pointer-events-none">
+          {/* Left Arrow */}
+          <motion.button
+            onClick={() =>
+              setCurrentSlide((prev) => (prev - 1 + botanicos.length) % botanicos.length)
+            }
+            className="text-kraut-orange hover:text-kraut-white transition-colors pointer-events-auto"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Previous botanico"
+          >
+            <svg
+              className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
             >
-              <svg
-                className="w-8 h-8 sm:w-10 sm:h-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </motion.button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </motion.button>
 
-            {/* Indicators */}
-            <div className="flex gap-2 sm:gap-3">
-              {botanicos.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-1 transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-kraut-orange w-8 sm:w-10"
-                      : "bg-kraut-orange/40 w-2 sm:w-3 hover:bg-kraut-orange/70"
-                  }`}
-                  whileHover={{ opacity: 0.8 }}
-                  aria-label={`Go to botanico ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <motion.button
-              onClick={() => setCurrentSlide((prev) => (prev + 1) % botanicos.length)}
-              className="text-kraut-orange hover:text-kraut-white transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Next botanico"
+          {/* Right Arrow */}
+          <motion.button
+            onClick={() => setCurrentSlide((prev) => (prev + 1) % botanicos.length)}
+            className="text-kraut-orange hover:text-kraut-white transition-colors pointer-events-auto"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Next botanico"
+          >
+            <svg
+              className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
             >
-              <svg
-                className="w-8 h-8 sm:w-10 sm:h-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5L15.75 12l-7.5 7.5"
-                />
-              </svg>
-            </motion.button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5L15.75 12l-7.5 7.5"
+              />
+            </svg>
+          </motion.button>
+        </div>
+
+        {/* Navigation Indicators - Bottom center */}
+        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+          {/* Indicators */}
+          <div className="flex gap-2">
+            {botanicos.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-1 transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-kraut-orange w-6 sm:w-8"
+                    : "bg-kraut-orange/40 w-1.5 sm:w-2 hover:bg-kraut-orange/70"
+                }`}
+                whileHover={{ opacity: 0.8 }}
+                aria-label={`Go to botanico ${index + 1}`}
+              />
+            ))}
           </div>
 
-          {/* Counter */}
-          <div className="text-kraut-orange/60 text-xs sm:text-sm font-light tracking-widest col-span-full md:col-span-auto text-center md:text-right mt-4 md:mt-0">
-            <span>{String(currentSlide + 1).padStart(2, "0")}</span>
-            <span> / </span>
-            <span>{String(botanicos.length).padStart(2, "0")}</span>
-          </div>
+
         </div>
       </div>
     </section>

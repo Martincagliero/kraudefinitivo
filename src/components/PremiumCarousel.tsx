@@ -190,7 +190,7 @@ const PremiumCarousel = () => {
         onClick={() =>
           setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
         }
-        className="absolute left-6 md:left-12 top-1/2 transform -translate-y-1/2 z-10 text-orange-500 hover:text-orange-400 transition-colors"
+        className="absolute left-6 md:left-12 top-1/2 transform -translate-y-1/2 z-10 text-kraut-orange hover:text-orange-400 transition-colors"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Previous slide"
@@ -213,7 +213,7 @@ const PremiumCarousel = () => {
       {/* Arrow Navigation - Right */}
       <motion.button
         onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
-        className="absolute right-6 md:right-12 top-1/2 transform -translate-y-1/2 z-10 text-orange-500 hover:text-orange-400 transition-colors"
+        className="absolute right-6 md:right-12 top-1/2 transform -translate-y-1/2 z-10 text-kraut-orange hover:text-orange-400 transition-colors"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Next slide"
@@ -233,12 +233,6 @@ const PremiumCarousel = () => {
         </svg>
       </motion.button>
 
-      {/* Slide Counter (Optional) */}
-      <div className="absolute top-8 md:top-12 right-8 md:right-12 text-white text-xs md:text-sm font-light tracking-wider opacity-60 z-10">
-        <span>{String(currentSlide + 1).padStart(2, '0')}</span>
-        <span> / </span>
-        <span>{String(slides.length).padStart(2, '0')}</span>
-      </div>
     </div>
   );
 };

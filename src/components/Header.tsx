@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -29,11 +31,19 @@ export default function Header() {
     };
   }, []);
 
-  const handleScroll = (elementId: string) => {
+  const handleNavigation = (elementId: string) => {
+    setIsMenuOpen(false);
+    
+    // Redirigir a /botanicos si es el enlace de Botánicos
+    if (elementId === "botanicos") {
+      router.push("/botanicos");
+      return;
+    }
+    
+    // Para otros items, scroll suave
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
     }
   };
 
@@ -88,10 +98,11 @@ export default function Header() {
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and brand */}
+          {/* Logo and brand - clickable to go home */}
           <motion.div
-            className="flex items-center gap-2 md:gap-3"
+            className="flex items-center gap-2 md:gap-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <div className="w-8 h-8 md:w-10 md:h-10 relative flex-shrink-0">
               <Image
@@ -113,7 +124,7 @@ export default function Header() {
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => handleScroll(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className="btn-nav text-sm lg:text-base"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -127,7 +138,7 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* CTA Button - Hidden on mobile, visible on sm and up */}
             <motion.button
-              onClick={() => handleScroll("contact")}
+              onClick={() => handleNavigation("contact")}
               className="hidden sm:inline-block text-xs md:text-sm font-bold tracking-wider py-2 px-6 rounded-full border-2 bg-kraut-orange text-white border-kraut-orange hover:bg-orange-600 hover:border-orange-600 transition-colors duration-300"
             >
               DEGUSTAR
@@ -182,7 +193,7 @@ export default function Header() {
               {navItems.map((item, i) => (
                 <motion.button
                   key={item.id}
-                  onClick={() => handleScroll(item.id)}
+                  onClick={() => handleNavigation(item.id)}
                   className="btn-mobile-nav w-full text-left font-serif font-bold tracking-wider"
                   custom={i}
                   variants={mobileMenuItemVariants}
