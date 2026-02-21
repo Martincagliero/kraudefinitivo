@@ -103,18 +103,9 @@ export default function InstagramSection() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            <button className="relative overflow-hidden px-10 sm:px-12 md:px-14 py-4 sm:py-4.5 border border-kraut-orange/70 text-kraut-orange font-serif font-semibold tracking-[0.15em] uppercase text-xs sm:text-sm transition-colors duration-300">
-              {/* Animated fill from left */}
-              <motion.div
-                className="absolute inset-0 bg-kraut-orange"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{ zIndex: -1 }}
-              />
-              
+            <button className="relative overflow-hidden px-10 sm:px-12 md:px-14 py-4 sm:py-4.5 border border-kraut-orange/70 text-kraut-orange hover:bg-kraut-orange hover:text-kraut-white hover:border-kraut-orange font-serif font-semibold tracking-[0.15em] uppercase text-xs sm:text-sm transition-all duration-300 active:bg-kraut-orange active:text-kraut-white">
               {/* Button content */}
-              <span className="flex items-center justify-center gap-3 group-hover:text-kraut-white transition-colors duration-300">
+              <span className="flex items-center justify-center gap-3">
                 <svg
                   width="20"
                   height="20"
@@ -122,7 +113,7 @@ export default function InstagramSection() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="group-hover:scale-110 transition-transform duration-300"
+                  className="transition-transform duration-300"
                 >
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37Z" />
@@ -152,7 +143,7 @@ export default function InstagramSection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <button className="relative overflow-hidden px-8 sm:px-10 py-3 sm:py-3.5 border border-kraut-white/30 text-kraut-white/80 font-serif font-medium tracking-[0.12em] uppercase text-xs transition-all duration-300 hover:border-kraut-white/50 hover:text-kraut-white">
+            <button className="relative overflow-hidden px-8 sm:px-10 py-3 sm:py-3.5 border border-kraut-white/30 text-kraut-white/80 hover:bg-kraut-orange hover:text-kraut-white hover:border-kraut-orange font-serif font-medium tracking-[0.12em] uppercase text-xs transition-all duration-300 active:bg-kraut-orange active:text-kraut-white">
               <span className="flex items-center justify-center gap-2.5">
                 <svg
                   width="18"
