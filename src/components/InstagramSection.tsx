@@ -82,18 +82,10 @@ export default function InstagramSection() {
         {/* Brand name */}
         <motion.h3
           variants={itemVariants}
-          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-kraut-white mb-3 sm:mb-4 tracking-widest uppercase"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-kraut-white mb-10 sm:mb-12 tracking-widest uppercase"
         >
-          Krautermeister
+          Viví la experiencia
         </motion.h3>
-
-        {/* Instagram handle */}
-        <motion.p
-          variants={itemVariants}
-          className="font-sans text-lg sm:text-xl md:text-2xl text-kraut-orange/80 mb-10 sm:mb-12 tracking-wide"
-        >
-          @krautermeister_
-        </motion.p>
 
         {/* Primary CTA - Instagram */}
         <motion.div variants={itemVariants}>
