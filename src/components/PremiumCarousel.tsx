@@ -132,7 +132,7 @@ const PremiumCarousel = () => {
               alt={slides[currentSlide].title}
               fill
               priority
-              className="object-cover"
+              className={`object-cover ${currentSlide === 1 || currentSlide === 2 ? 'md:object-[center_35%]' : ''}`}
               sizes="100vw"
             />
 
