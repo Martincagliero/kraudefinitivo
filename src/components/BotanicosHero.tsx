@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 
 export default function BotanicosHero() {
   return (
-    <section className="relative w-full h-screen min-h-screen flex items-center justify-center bg-kraut-dark overflow-hidden">
-      {/* Dark background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-kraut-dark via-kraut-dark to-black opacity-80" />
+    <section 
+      className="relative w-full h-screen min-h-screen flex items-center justify-center bg-kraut-dark overflow-hidden bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: 'url(/botanicos-bg.jpg)' }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/60" />
 
       {/* Content */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
