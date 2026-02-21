@@ -22,11 +22,6 @@ const slides: Slide[] = [
     subtitle: 'Craftmanship europeo de siglos de experiencia',
   },
   {
-    image: '/editorial-3.jpg',
-    title: 'Perfección',
-    subtitle: 'Cada detalle cuenta en el arte de crear',
-  },
-  {
     image: '/editorial-4.jpg',
     title: 'Destilación',
     subtitle: 'Proceso meticuloso de generaciones',
@@ -132,7 +127,7 @@ const PremiumCarousel = () => {
               alt={slides[currentSlide].title}
               fill
               priority
-              className={`object-cover ${currentSlide === 1 || currentSlide === 2 ? 'md:object-[center_65%]' : ''}`}
+              className={`object-cover ${currentSlide === 1 ? 'md:object-[center_65%]' : ''}`}
               sizes="100vw"
             />
 
