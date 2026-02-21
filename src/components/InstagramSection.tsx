@@ -31,9 +31,15 @@ export default function InstagramSection() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#08090a]">
+    <section id="contact" className="relative w-full py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: 'url(/contact-bg.jpg)' }}
+      />
+      
       {/* Deep dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0c] via-[#08090a] to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/75 to-black/85" />
       
       {/* Subtle texture overlay */}
       <div 
