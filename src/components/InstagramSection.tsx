@@ -21,15 +21,6 @@ export default function InstagramSection() {
     },
   };
 
-  const titleVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -69,14 +60,6 @@ export default function InstagramSection() {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        {/* Title */}
-        <motion.h2
-          variants={titleVariants}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-kraut-orange uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-16 sm:mb-20 md:mb-24 leading-none"
-        >
-          Seguinos en Instagram
-        </motion.h2>
-
         {/* Central content card */}
         <motion.div
           variants={itemVariants}
