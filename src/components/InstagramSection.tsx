@@ -136,14 +136,6 @@ export default function InstagramSection() {
           </motion.a>
         </motion.div>
 
-        {/* Location */}
-        <motion.p
-          variants={itemVariants}
-          className="mt-10 sm:mt-12 font-sans text-base sm:text-lg text-kraut-white/70 tracking-wide"
-        >
-          Santa Fe, Argentina
-        </motion.p>
-
         {/* Elegant divider */}
         <motion.div
           variants={itemVariants}
@@ -179,6 +171,14 @@ export default function InstagramSection() {
             </button>
           </motion.a>
         </motion.div>
+
+        {/* Location */}
+        <motion.p
+          variants={itemVariants}
+          className="mt-8 sm:mt-10 font-sans text-base sm:text-lg text-kraut-white/70 tracking-wide"
+        >
+          Santa Fe, Argentina
+        </motion.p>
 
         {/* Footer copyright */}
         <motion.p
