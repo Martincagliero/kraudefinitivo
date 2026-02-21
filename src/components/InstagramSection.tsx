@@ -34,12 +34,12 @@ export default function InstagramSection() {
     <section id="contact" className="relative w-full py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center bg-fixed brightness-110"
         style={{ backgroundImage: 'url(/contact-bg.jpg)' }}
       />
       
       {/* Deep dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/25 to-black/35" />
       
       {/* Subtle texture overlay */}
       <div 
@@ -54,7 +54,7 @@ export default function InstagramSection() {
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.3) 100%)'
+          background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.15) 100%)'
         }} 
       />
 
