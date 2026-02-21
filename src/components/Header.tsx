@@ -61,7 +61,18 @@ export default function Header() {
     }
   };
 
-  const navItems = [
+  const handleLogoClick = () => {
+    // Si estamos en /botanicos, ir a home primero
+    if (pathname === "/botanicos") {
+      router.push("/");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+    } else {
+      // Si estamos en home, simplemente scroll al top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
     { label: "Historia", id: "about" },
     { label: "Botánicos", id: "botanicos" },
     { label: "Botella", id: "bottle" },
@@ -116,7 +127,7 @@ export default function Header() {
           <motion.div
             className="flex items-center gap-2 md:gap-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={handleLogoClick}
           >
             <div className="w-8 h-8 md:w-10 md:h-10 relative flex-shrink-0">
               <Image
