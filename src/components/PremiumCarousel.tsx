@@ -44,6 +44,13 @@ const PremiumCarousel = () => {
   const [dragStart, setDragStart] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Reset currentSlide if out of bounds
+  useEffect(() => {
+    if (currentSlide >= slides.length) {
+      setCurrentSlide(0);
+    }
+  }, [currentSlide]);
+
   // Autoplay logic
   useEffect(() => {
     if (isHovered) return;
@@ -107,6 +114,7 @@ const PremiumCarousel = () => {
     >
       {/* Slides */}
       <AnimatePresence mode="wait">
+        {slides[currentSlide] && (
         <motion.div
           key={currentSlide}
           variants={slideVariants}
@@ -161,6 +169,7 @@ const PremiumCarousel = () => {
             </motion.div>
           </div>
         </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Navigation Indicators */}
