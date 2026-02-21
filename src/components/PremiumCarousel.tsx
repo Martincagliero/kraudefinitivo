@@ -132,13 +132,13 @@ const PremiumCarousel = () => {
               alt={slides[currentSlide].title}
               fill
               priority
-              className="object-contain"
+              className="object-cover"
               sizes="100vw"
             />
 
             {/* Dark Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-60" />
-            <div className="absolute inset-0 bg-black opacity-20 md:opacity-5" />
+            <div className="absolute inset-0 bg-black opacity-20" />
           </motion.div>
 
           {/* Content */}
