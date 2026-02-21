@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import PremiumCarousel from "@/components/PremiumCarousel";
 import BottleShowcase from "@/components/BottleShowcase";
+import InstagramSection from "@/components/InstagramSection";
 import Contact from "@/components/Contact";
 import LogoWatermark from "@/components/LogoWatermark";
 
@@ -23,6 +24,7 @@ export default function Page() {
         <BottleShowcase />
         <PremiumCarousel />
         <About />
+        <InstagramSection />
         <Contact />
       </main>
     </div>
