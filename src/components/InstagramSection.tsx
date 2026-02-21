@@ -148,16 +148,7 @@ export default function InstagramSection() {
           >
             <button className="relative overflow-hidden px-8 sm:px-10 py-3 sm:py-3.5 border border-kraut-white/30 text-kraut-white/80 font-serif font-medium tracking-[0.12em] uppercase text-xs transition-all duration-300 hover:border-kraut-white/50 hover:text-kraut-white">
               <span className="flex items-center justify-center gap-2.5">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
+                <span className="text-base sm:text-lg">💬</span>
                 <span>Contactar por WhatsApp</span>
               </span>
             </button>
