@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -76,6 +77,40 @@ export default function About() {
           <p className="pt-2 sm:pt-4 md:pt-6 italic text-kraut-white/90">
             Ahí, lo que era una prueba se convirtió en marca.
           </p>
+        </motion.div>
+
+        {/* Premium Button CTA */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 md:pt-12"
+        >
+          {/* Decorative divider line */}
+          <motion.div
+            className="h-px bg-gradient-to-r from-transparent via-kraut-white/30 to-transparent mb-10 sm:mb-12 md:mb-14"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          />
+
+          {/* Premium Button */}
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/botanicos">
+              <motion.button
+                className="px-8 sm:px-10 md:px-14 py-3 sm:py-4 md:py-5 border-2 border-kraut-white/60 text-kraut-white uppercase font-serif font-bold text-xs sm:text-sm md:text-base tracking-widest hover:border-kraut-white hover:bg-kraut-white/5 transition-all duration-300 rounded-none"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                DESCUBRÍ LOS BOTÁNICOS
+              </motion.button>
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
