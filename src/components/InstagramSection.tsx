@@ -103,7 +103,7 @@ export default function InstagramSection() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            <button className="relative overflow-hidden px-10 sm:px-12 md:px-14 py-4 sm:py-4.5 border border-kraut-orange/70 text-kraut-orange hover:bg-kraut-orange hover:text-kraut-white hover:border-kraut-orange font-serif font-semibold tracking-[0.15em] uppercase text-xs sm:text-sm transition-all duration-300 active:bg-kraut-orange active:text-kraut-white">
+            <button className="relative overflow-hidden px-10 sm:px-12 md:px-14 py-4 sm:py-4.5 border-2 border-kraut-orange text-kraut-orange hover:bg-kraut-orange hover:text-kraut-white font-serif font-semibold tracking-[0.15em] uppercase text-xs sm:text-sm transition-all duration-300">
               {/* Button content */}
               <span className="flex items-center justify-center gap-3">
                 <svg
@@ -143,7 +143,7 @@ export default function InstagramSection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <button className="relative overflow-hidden px-8 sm:px-10 py-3 sm:py-3.5 border border-kraut-white/30 text-kraut-white/80 hover:bg-kraut-orange hover:text-kraut-white hover:border-kraut-orange font-serif font-medium tracking-[0.12em] uppercase text-xs transition-all duration-300 active:bg-kraut-orange active:text-kraut-white">
+            <button className="relative overflow-hidden px-8 sm:px-10 py-3 sm:py-3.5 border-2 border-kraut-white/50 text-kraut-white hover:bg-kraut-orange hover:border-kraut-orange font-serif font-medium tracking-[0.12em] uppercase text-xs transition-all duration-300">
               <span className="flex items-center justify-center gap-2.5">
                 <svg
                   width="18"
