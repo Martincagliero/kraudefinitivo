@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const videos = ["/hero-video.mp4", "/videohero.mp4"];
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -14,19 +17,32 @@ export default function Hero() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Cambiar video cada 8 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentVideo((prev) => (prev + 1) % videos.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full h-screen min-h-screen flex items-center justify-center overflow-hidden bg-kraut-dark">
-      {/* Video background - optimized for mobile */}
-      <video
+      {/* Video background - alternating videos */}
+      <motion.video
+        key={currentVideo}
         className="absolute inset-0 w-full h-full md:max-w-[85vw] md:h-[85vh] md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 object-cover"
         autoPlay
         muted
-        loop
         playsInline
         poster="/hero-video.jpg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+        <source src={videos[currentVideo]} type="video/mp4" />
+      </motion.video>
 
       {/* Enhanced overlay with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />

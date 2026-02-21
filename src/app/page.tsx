@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import EditorialImages from "@/components/EditorialImages";
+import PremiumCarousel from "@/components/PremiumCarousel";
 import BotanicosSection from "@/components/BotanicosSection";
 import BottleShowcase from "@/components/BottleShowcase";
 import Differentiation from "@/components/Differentiation";
@@ -24,7 +24,7 @@ export default function Page() {
         <Hero />
         <BottleShowcase />
         <About />
-        <EditorialImages />
+        <PremiumCarousel />
         <BotanicosSection />
         <Differentiation />
         <Contact />

@@ -108,8 +108,8 @@ export default function Header() {
             </span>
           </motion.div>
 
-          {/* Navigation - Hidden on mobile, visible on md and up */}
-          <nav className="hidden md:flex items-center gap-3 lg:gap-4">
+          {/* Navigation - HIDDEN on all screens */}
+          <nav className="hidden items-center gap-3 lg:gap-4">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
@@ -123,57 +123,56 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Hidden on mobile, visible on md and up */}
-          <motion.button
-            onClick={() => handleScroll("contact")}
-            className="btn-cta hidden sm:inline-block text-xs md:text-sm"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            DEGUSTAR
-          </motion.button>
-
-          {/* Hamburger Menu Button - Only render on mobile */}
-          {isMobile && (
+          {/* Right side: CTA + Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* CTA Button - Hidden on mobile, visible on sm and up */}
             <motion.button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="hamburger-btn"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Toggle menu"
+              onClick={() => handleScroll("contact")}
+              className="hidden sm:inline-block text-xs md:text-sm font-bold tracking-wider py-2 px-6 rounded-full border-2 bg-kraut-orange text-white border-kraut-orange hover:bg-orange-600 hover:border-orange-600 transition-colors duration-300"
             >
-              <div className="hamburger-icon">
-                <motion.div
-                  className="hamburger-line"
-                  variants={hamburgerVariants.top}
-                  initial="closed"
-                  animate={isMenuOpen ? "open" : "closed"}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.div
-                  className="hamburger-line"
-                  variants={hamburgerVariants.middle}
-                  initial="closed"
-                  animate={isMenuOpen ? "open" : "closed"}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.div
-                  className="hamburger-line"
-                  variants={hamburgerVariants.bottom}
-                  initial="closed"
-                  animate={isMenuOpen ? "open" : "closed"}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
+              DEGUSTAR
             </motion.button>
-          )}
+
+            {/* Hamburger Menu Button - ALWAYS visible */}
+            <motion.button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="hamburger-btn"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Toggle menu"
+              >
+                <div className="hamburger-icon">
+                  <motion.div
+                    className="hamburger-line"
+                    variants={hamburgerVariants.top}
+                    initial="closed"
+                    animate={isMenuOpen ? "open" : "closed"}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    className="hamburger-line"
+                    variants={hamburgerVariants.middle}
+                    initial="closed"
+                    animate={isMenuOpen ? "open" : "closed"}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    className="hamburger-line"
+                    variants={hamburgerVariants.bottom}
+                    initial="closed"
+                    animate={isMenuOpen ? "open" : "closed"}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+              </motion.button>
+          </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Navigation Menu - visible when menu open */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              className="md:hidden mt-4 pt-4 border-t border-kraut-orange/20"
+              className="mt-4 pt-4 border-t border-kraut-orange/20"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
@@ -184,7 +183,7 @@ export default function Header() {
                 <motion.button
                   key={item.id}
                   onClick={() => handleScroll(item.id)}
-                  className="btn-mobile-nav w-full text-left"
+                  className="btn-mobile-nav w-full text-left font-serif font-bold tracking-wider"
                   custom={i}
                   variants={mobileMenuItemVariants}
                   initial="hidden"
@@ -192,7 +191,7 @@ export default function Header() {
                   exit="exit"
                   whileTap={{ scale: 0.95 }}
                 >
-                  {item.label}
+                  {item.label.toUpperCase()}
                 </motion.button>
               ))}
             </motion.nav>

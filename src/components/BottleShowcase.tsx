@@ -61,8 +61,8 @@ export default function BottleShowcase() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
-          <h2 className="font-medieval text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-kraut-white leading-tight tracking-wide">
-            La botella como amuleto.
+          <h2 className="font-medieval text-2xl sm:text-3xl md:text-6xl lg:text-8xl text-kraut-white leading-tight tracking-wide">
+            LA BOTELLA COMO AMULETO.
           </h2>
         </motion.div>
       </motion.div>
