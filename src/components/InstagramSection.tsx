@@ -182,7 +182,7 @@ export default function InstagramSection() {
         {/* Footer copyright */}
         <motion.p
           variants={itemVariants}
-          className="mt-16 sm:mt-20 md:mt-24 font-sans text-xs sm:text-sm text-kraut-white/40 tracking-widest"
+          className="mt-16 sm:mt-20 md:mt-24 font-sans text-xs sm:text-sm text-kraut-orange tracking-widest"
         >
           © 2024 KRAUTERMEISTER. Todos los derechos reservados.
         </motion.p>
