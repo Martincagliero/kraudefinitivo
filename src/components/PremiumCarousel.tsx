@@ -138,7 +138,7 @@ const PremiumCarousel = () => {
 
             {/* Dark Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-60" />
-            <div className="absolute inset-0 bg-black opacity-20" />
+            <div className="absolute inset-0 bg-black opacity-20 md:opacity-5" />
           </motion.div>
 
           {/* Content */}
