@@ -68,12 +68,12 @@ export default function InstagramSection() {
           transition={{ duration: 0.3 }}
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-kraut-orange/20 to-transparent blur-lg" />
-          <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-kraut-orange/40 bg-kraut-dark/80 backdrop-blur-sm p-6 sm:p-8">
+          <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-kraut-orange/40 bg-kraut-dark/80 backdrop-blur-sm p-3 sm:p-4">
             <Image
               src="/logo.png"
               alt="Krautermeister Logo"
               fill
-              className="object-contain p-4"
+              className="object-contain"
               priority
             />
           </div>
