@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -34,13 +35,26 @@ export default function Header() {
   const handleNavigation = (elementId: string) => {
     setIsMenuOpen(false);
     
-    // Redirigir a /botanicos si es el enlace de Botánicos
+    // Si clickeamos en Botánicos
     if (elementId === "botanicos") {
       router.push("/botanicos");
       return;
     }
     
-    // Para otros items, scroll suave
+    // Si estamos en /botanicos y clickeamos en otro item, volver a home
+    if (pathname === "/botanicos") {
+      router.push("/");
+      // Esperar a que la página cargue y luego hacer scroll
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500);
+      return;
+    }
+    
+    // Si estamos en home, hacer scroll directo al elemento
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
