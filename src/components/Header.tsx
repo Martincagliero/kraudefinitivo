@@ -73,6 +73,8 @@ export default function Header() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const navItems = [
     { label: "Historia", id: "about" },
     { label: "Botánicos", id: "botanicos" },
     { label: "Botella", id: "bottle" },

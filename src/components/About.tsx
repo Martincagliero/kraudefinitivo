@@ -104,21 +104,28 @@ export default function About() {
             <Link href="/botanicos">
               <motion.button
                 className="relative px-8 sm:px-12 md:px-16 py-3 sm:py-4 md:py-5 border-2 border-kraut-orange text-kraut-orange uppercase font-serif font-bold text-xs sm:text-sm md:text-base tracking-widest rounded-none overflow-hidden group"
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {/* Glow background on hover */}
-                <div className="absolute inset-0 bg-kraut-orange opacity-0 group-hover:opacity-15 transition-opacity duration-300 -z-10" />
-                
-                {/* Animated shine effect */}
+                {/* Animated border glow effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-kraut-white/10 to-transparent opacity-0 group-hover:opacity-100 -z-10"
-                  animate={{ x: ['-100%', '100%'] }}
-                  transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 3 }}
+                  className="absolute inset-0 border-2 border-kraut-orange rounded-none opacity-0 group-hover:opacity-100"
+                  animate={{ boxShadow: ['0 0 0 0 rgba(212, 133, 90, 0.7)', '0 0 0 10px rgba(212, 133, 90, 0)'] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+                
+                {/* Glow background on hover */}
+                <div className="absolute inset-0 bg-kraut-orange opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                
+                {/* Horizontal sweep animation */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-kraut-orange/30 to-transparent opacity-0 group-hover:opacity-100"
+                  animate={{ x: ['-200%', '200%'] }}
+                  transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 2 }}
                 />
 
                 {/* Text with color change on hover */}
-                <span className="relative group-hover:text-kraut-white transition-colors duration-300">
+                <span className="relative z-10 inline-block group-hover:text-kraut-white transition-colors duration-300">
                   DESCUBRÍ LOS BOTÁNICOS
                 </span>
               </motion.button>
